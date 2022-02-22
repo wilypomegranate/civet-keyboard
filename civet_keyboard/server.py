@@ -23,7 +23,7 @@ def create_handler(hid_fh):
             keystroke = await reader.read(8)
             modifier, _, *keys = struct.unpack("<bbbbbbbb", keystroke)
             log.msg("keystroke sent", modifier=modifier, keys=keys)
-            hid_fh.write(keystroke)
+            await hid_fh.write(keystroke)
 
     return handle_key
 
